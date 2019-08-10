@@ -40,6 +40,7 @@ exports.generateCacheDirectoryNames = generateCacheDirectoryNames
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 exports.onPreInit = async function({ store }, { extraDirsToCache, cachePublic }) {
+  console.log(`plugin-netlify-cache: onPreInit`)
   if (!process.env.NETLIFY_BUILD_BASE) { return }
 
   const { dirsToCache, netlifyCacheDir, rootDirectory } = await calculateDirs(store, { extraDirsToCache, cachePublic })
@@ -64,6 +65,7 @@ exports.onPreInit = async function({ store }, { extraDirsToCache, cachePublic })
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 exports.onPostBuild = async function({ store }, { extraDirsToCache, cachePublic }) {
+  console.log(`plugin-netlify-cache: onPostBuild`)
   if (!process.env.NETLIFY_BUILD_BASE) { return }
 
   const { dirsToCache, netlifyCacheDir, rootDirectory } = await calculateDirs(store, { extraDirsToCache, cachePublic })
